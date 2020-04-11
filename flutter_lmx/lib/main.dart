@@ -1,111 +1,632 @@
 import 'package:flutter/material.dart';
+import 'res/listData.dart';
 
-void main() => runApp(MyApp());
+/*
+ * 提示 找不到 flutter.so 方法：
+ * 命令行 Terminal 输入，编译apk
+ * flutter build apk --target-platform=android-arm32
+ * 或
+ * flutter build apk --target-platform=android-arm64
+ */
 
+void main() {
+  runApp(MyApp());
+}
+
+// 自定义组件
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+        home: Scaffold(
+          appBar: AppBar(
+              title: Text('FlutterDemo',
+                  style: TextStyle(fontSize: 20, color: Colors.green))),
+          body: RowColumnContent(), // 在此更换body
+        ),
+        theme: ThemeData(primarySwatch: Colors.yellow // 主题颜色
+        ));
+  }
+}
+
+/// Text、边框
+class HomeContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+        child: Container(
+          child: Text(
+            '你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter',
+            textDirection: TextDirection.ltr,
+            textAlign: TextAlign.left,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            //ellipsis
+            textScaleFactor: 2,
+            // 字体放大
+            style: TextStyle(
+                fontSize: 15,
+                color: Colors.black,
+                fontWeight: FontWeight.w800,
+                // 加粗
+                fontStyle: FontStyle.italic,
+                // 斜体
+                decoration: TextDecoration.lineThrough,
+                // 下划线
+                decorationColor: Colors.white,
+                decorationStyle: TextDecorationStyle.dashed,
+                // 虚线
+                letterSpacing: 5.0 // 字间距
+            ),
+          ),
+          width: 300.0,
+          height: 300.0,
+          decoration: BoxDecoration(
+            // 边框
+              color: Colors.yellow,
+              border: Border.all(color: Colors.blue, width: 2.0),
+              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+//        padding: EdgeInsets.all(10.0),
+          padding: EdgeInsets.fromLTRB(10, 30, 5, 20),
+          margin: EdgeInsets.all(20.0),
+//        transform: Matrix4.translationValues(100, 0, 0), // 平移
+//        transform: Matrix4.rotationZ(0.3), // 旋转
+//        transform: Matrix4.diagonal3Values(1.2, 1, 1),  // 拉伸
+//        alignment: Alignment.topLeft,  // 子控件放置位置
+        ));
+  }
+}
+
+/// 加载网络图片
+class ImageContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+        child: Container(
+          child: Image.network(
+            "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg",
+//              alignment: Alignment.topLeft,
+//              color: Colors.blue,
+//              colorBlendMode: BlendMode.colorBurn,
+//              fit:BoxFit.cover
+//              repeat: ImageRepeat.repeatX,  // 平铺
+          ),
+          width: 300.0,
+          height: 300.0,
+          decoration: BoxDecoration(
+            // 边框
+            color: Colors.yellow,
+            border: Border.all(color: Colors.blue, width: 2.0),
+          ),
+        ));
+  }
+}
+
+/// 加载圆角图片
+class RoundImageContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+        child: Container(
+          child: ClipOval(
+              child: Image.network(
+                  "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg")),
+          width: 300.0,
+          height: 300.0,
+          decoration: BoxDecoration(
+            // 边框
+            color: Colors.yellow,
+            border: Border.all(color: Colors.blue, width: 2.0),
+            borderRadius: BorderRadius.circular(150),
+            // 通过DecorationImage实现
+//            image: DecorationImage(
+//              image: NetworkImage("http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg"),
+//              fit: BoxFit.cover
+//            )
+          ),
+        ));
+  }
+}
+
+/// 加载本地图片
+class LocalImageContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+        child: Container(
+          child: Image.asset(
+            "images/1.jpg",
+          ),
+          width: 300.0,
+          height: 500.0,
+          decoration: BoxDecoration(
+            // 边框
+            color: Colors.black,
+            border: Border.all(color: Colors.blue, width: 2.0),
+          ),
+        ));
+  }
+}
+
+/// ListView
+class ListViewContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      scrollDirection: Axis.vertical,
+      children: <Widget>[
+        ListTile(
+          leading: Icon(Icons.home),
+          trailing: Icon(Icons.settings),
+          title: Text('一级标题'),
+          subtitle: Text('二级标题二级标题'),
+        ),
+        ListTile(
+          leading: Image.network(
+              "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg"),
+          title: Text('一级标题'),
+          subtitle: Text('二级标题二级标题'),
+        ),
+        ListTile(
+          leading: Image.asset("images/1.jpg"),
+          title: Text('一级标题'),
+          subtitle: Text('二级标题二级标题'),
+        ),
+        Image.asset("images/1.jpg"),
+        Image.asset("images/2.jpg"),
+        Image.asset("images/3.jpg"),
+        Image.asset("images/4.jpg"),
+        Image.asset("images/5.jpg"),
+        Image.asset("images/6.jpg"),
+        Image.asset("images/7.jpg"),
+        Image.asset("images/8.jpg"),
+        Image.asset("images/9.jpg"),
+        Image.asset("images/10.jpg"),
+      ],
+      padding: EdgeInsets.all(10.0),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
+/// Container
+class ListView2Content extends StatelessWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      //
+        height: 800,
+        child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
+          Container(
+            height: 200,
+            padding: EdgeInsets.all(10),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: <Widget>[
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.orange,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.orange,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 600,
+            padding: EdgeInsets.all(10),
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: <Widget>[
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.orange,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.red,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.green,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.blue,
+                ),
+                Container(
+                  width: 180,
+                  height: 180,
+                  color: Colors.orange,
+                ),
+              ],
+            ),
+          )
+        ]));
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+/// 动态列表
+class DynamicListViewContent extends StatelessWidget {
+  // 自定义方法
+  List<Widget> _getData() {
+    List<Widget> list = new List();
+    for (var i = 0; i < 20; i++) {
+      list.add(ListTile(
+        title: Text("111111我是标题$i"),
+      ));
+    }
+    return list;
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+    // TODO: implement build
+    return ListView(
+      children: this._getData(),
+    );
+  }
+}
+
+/// 读取文件列表
+class ListViewReadFileContent extends StatelessWidget {
+  List<Widget> _getData() {
+    var tempList = listData.map((value) {
+      return ListTile(
+        leading: Image.network(value["imageUrl"]),
+        title: Text(value["title"]),
+        subtitle: Text(value["author"]),
+      );
+    });
+
+    return tempList.toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      children: this._getData(),
+    );
+  }
+}
+
+/// ListView.builder
+class ListViewBuilderContent extends StatelessWidget {
+//  List list = new List();
+//
+//  ListViewBuilderContent() {
+//    for(var i = 0; i < 20; i++) {
+//      this.list.add('我是第$i条');
+//    }
+//  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView.builder(
+        itemCount: listData.length, itemBuilder: this._getListData);
+  }
+
+  Widget _getListData(context, index) {
+    return ListTile(
+      leading: Image.network(listData[index]["imageUrl"]),
+      title: Text(listData[index]["title"]),
+      subtitle: Text(listData[index]["author"]),
+    );
+  }
+}
+
+/// GridView
+class GridViewContent extends StatelessWidget {
+  List<Widget> _getListData() {
+    var tempList = listData.map((value) {
+      return Container(
+        alignment: Alignment.center,
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+            Image.network(value["imageUrl"]),
+            SizedBox(
+              height: 12,
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
+              value["title"],
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 15),
             ),
           ],
         ),
+        decoration: BoxDecoration(
+          border:
+          Border.all(color: Color.fromRGBO(233, 233, 233, 0.9), width: 1),
+        ),
+      );
+    });
+    return tempList.toList();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return GridView.count(
+        crossAxisCount: 2,
+        crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10.0,
+        padding: EdgeInsets.all(10.0),
+//      childAspectRatio: 1.5,
+        children: _getListData());
+  }
+}
+
+/// GridView.builder
+class GridViewBuilderContent extends StatelessWidget {
+  Widget _getListData(context, index) {
+    return Container(
+      alignment: Alignment.center,
+      child: Column(
+        children: <Widget>[
+          Image.network(listData[index]["imageUrl"]),
+          SizedBox(
+            height: 12,
+          ),
+          Text(
+            listData[index]["title"],
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 15),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      decoration: BoxDecoration(
+        border: Border.all(color: Color.fromRGBO(233, 233, 233, 0.9), width: 1),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return GridView.builder(
+      itemCount: listData.length,
+      itemBuilder: this._getListData,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 10.0,
+      ),
+    );
+  }
+}
+
+/// Padding
+class PaddingContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Padding(
+        padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+        child: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 1.5,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/1.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/2.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/3.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/4.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/5.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/6.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/1.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/2.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/3.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/4.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/5.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 10, 0, 0),
+              child: Image.asset(
+                'images/6.jpg',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ],
+        ));
+  }
+}
+
+/// Row、 Column 水平、垂直布局
+/// Expanded
+class RowColumnContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                height: 100,
+                color: Colors.blue,
+                child: Text('你好Flutter'),
+              ),
+            )
+          ],
+        ),
+        SizedBox(height: 10),
+        Row(
+          children: <Widget>[
+            Expanded(
+                flex: 2,
+                child: Container(
+                  height: 530,
+                  child: Image.asset('images/1.jpg'),
+                )),
+            SizedBox(width: 10),
+            Expanded(
+              flex: 1,
+              child: Container(
+                height: 500,
+                child: ListView(
+                  children: <Widget>[
+                    Container(height: 260, child: Image.asset('images/2.jpg')),
+                    SizedBox(height: 10),
+                    Container(
+                      height: 260,
+                      child: Image.asset('images/3.jpg'),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+/// Icon按钮
+// ignore: must_be_immutable
+class IconContainer extends StatelessWidget {
+  IconData icon;
+  Color color = Colors.red;
+  double size = 32.0;
+
+  IconContainer(this.icon, {this.color, this.size});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      height: 100.0,
+      width: 100.0,
+      color: this.color,
+      child: Center(
+        child: Icon(this.icon, size: this.size, color: Colors.white),
+      ),
     );
   }
 }
