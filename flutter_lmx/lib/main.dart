@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'res/listData.dart';
 
+import 'pages/Tabs.dart';
+
 /*
  * 提示 找不到 flutter.so 方法：
  * 命令行 Terminal 输入，编译apk
@@ -19,16 +21,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-              title: Text('FlutterDemo',
-                  style: TextStyle(fontSize: 20, color: Colors.green))),
-          body: RowColumnContent(), // 在此更换body
-        ),
-        theme: ThemeData(primarySwatch: Colors.yellow // 主题颜色
-        ));
+        home: Tabs(),
+        theme: ThemeData(primarySwatch: Colors.blue // 主题颜色
+            ));
   }
 }
+
 
 /// Text、边框
 class HomeContent extends StatelessWidget {
@@ -37,45 +35,45 @@ class HomeContent extends StatelessWidget {
     // TODO: implement build
     return Center(
         child: Container(
-          child: Text(
-            '你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter',
-            textDirection: TextDirection.ltr,
-            textAlign: TextAlign.left,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            //ellipsis
-            textScaleFactor: 2,
-            // 字体放大
-            style: TextStyle(
-                fontSize: 15,
-                color: Colors.black,
-                fontWeight: FontWeight.w800,
-                // 加粗
-                fontStyle: FontStyle.italic,
-                // 斜体
-                decoration: TextDecoration.lineThrough,
-                // 下划线
-                decorationColor: Colors.white,
-                decorationStyle: TextDecorationStyle.dashed,
-                // 虚线
-                letterSpacing: 5.0 // 字间距
+      child: Text(
+        '你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter你好Flutter',
+        textDirection: TextDirection.ltr,
+        textAlign: TextAlign.left,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        //ellipsis
+        textScaleFactor: 2,
+        // 字体放大
+        style: TextStyle(
+            fontSize: 15,
+            color: Colors.black,
+            fontWeight: FontWeight.w800,
+            // 加粗
+            fontStyle: FontStyle.italic,
+            // 斜体
+            decoration: TextDecoration.lineThrough,
+            // 下划线
+            decorationColor: Colors.white,
+            decorationStyle: TextDecorationStyle.dashed,
+            // 虚线
+            letterSpacing: 5.0 // 字间距
             ),
-          ),
-          width: 300.0,
-          height: 300.0,
-          decoration: BoxDecoration(
-            // 边框
-              color: Colors.yellow,
-              border: Border.all(color: Colors.blue, width: 2.0),
-              borderRadius: BorderRadius.all(Radius.circular(10.0))),
+      ),
+      width: 300.0,
+      height: 300.0,
+      decoration: BoxDecoration(
+          // 边框
+          color: Colors.yellow,
+          border: Border.all(color: Colors.blue, width: 2.0),
+          borderRadius: BorderRadius.all(Radius.circular(10.0))),
 //        padding: EdgeInsets.all(10.0),
-          padding: EdgeInsets.fromLTRB(10, 30, 5, 20),
-          margin: EdgeInsets.all(20.0),
+      padding: EdgeInsets.fromLTRB(10, 30, 5, 20),
+      margin: EdgeInsets.all(20.0),
 //        transform: Matrix4.translationValues(100, 0, 0), // 平移
 //        transform: Matrix4.rotationZ(0.3), // 旋转
 //        transform: Matrix4.diagonal3Values(1.2, 1, 1),  // 拉伸
 //        alignment: Alignment.topLeft,  // 子控件放置位置
-        ));
+    ));
   }
 }
 
@@ -86,22 +84,22 @@ class ImageContent extends StatelessWidget {
     // TODO: implement build
     return Center(
         child: Container(
-          child: Image.network(
-            "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg",
+      child: Image.network(
+        "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg",
 //              alignment: Alignment.topLeft,
 //              color: Colors.blue,
 //              colorBlendMode: BlendMode.colorBurn,
 //              fit:BoxFit.cover
 //              repeat: ImageRepeat.repeatX,  // 平铺
-          ),
-          width: 300.0,
-          height: 300.0,
-          decoration: BoxDecoration(
-            // 边框
-            color: Colors.yellow,
-            border: Border.all(color: Colors.blue, width: 2.0),
-          ),
-        ));
+      ),
+      width: 300.0,
+      height: 300.0,
+      decoration: BoxDecoration(
+        // 边框
+        color: Colors.yellow,
+        border: Border.all(color: Colors.blue, width: 2.0),
+      ),
+    ));
   }
 }
 
@@ -112,23 +110,23 @@ class RoundImageContent extends StatelessWidget {
     // TODO: implement build
     return Center(
         child: Container(
-          child: ClipOval(
-              child: Image.network(
-                  "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg")),
-          width: 300.0,
-          height: 300.0,
-          decoration: BoxDecoration(
-            // 边框
-            color: Colors.yellow,
-            border: Border.all(color: Colors.blue, width: 2.0),
-            borderRadius: BorderRadius.circular(150),
-            // 通过DecorationImage实现
+      child: ClipOval(
+          child: Image.network(
+              "http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg")),
+      width: 300.0,
+      height: 300.0,
+      decoration: BoxDecoration(
+        // 边框
+        color: Colors.yellow,
+        border: Border.all(color: Colors.blue, width: 2.0),
+        borderRadius: BorderRadius.circular(150),
+        // 通过DecorationImage实现
 //            image: DecorationImage(
 //              image: NetworkImage("http://pic.baike.soso.com/p/20130828/20130828161137-1346445960.jpg"),
 //              fit: BoxFit.cover
 //            )
-          ),
-        ));
+      ),
+    ));
   }
 }
 
@@ -139,17 +137,17 @@ class LocalImageContent extends StatelessWidget {
     // TODO: implement build
     return Center(
         child: Container(
-          child: Image.asset(
-            "images/1.jpg",
-          ),
-          width: 300.0,
-          height: 500.0,
-          decoration: BoxDecoration(
-            // 边框
-            color: Colors.black,
-            border: Border.all(color: Colors.blue, width: 2.0),
-          ),
-        ));
+      child: Image.asset(
+        "images/1.jpg",
+      ),
+      width: 300.0,
+      height: 500.0,
+      decoration: BoxDecoration(
+        // 边框
+        color: Colors.black,
+        border: Border.all(color: Colors.blue, width: 2.0),
+      ),
+    ));
   }
 }
 
@@ -200,7 +198,7 @@ class ListView2Content extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-      //
+        //
         height: 800,
         child: ListView(scrollDirection: Axis.vertical, children: <Widget>[
           Container(
@@ -364,7 +362,9 @@ class ListViewBuilderContent extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListView.builder(
-        itemCount: listData.length, itemBuilder: this._getListData);
+        itemCount: listData.length,
+        itemBuilder: this._getListData
+    );
   }
 
   Widget _getListData(context, index) {
@@ -397,7 +397,7 @@ class GridViewContent extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           border:
-          Border.all(color: Color.fromRGBO(233, 233, 233, 0.9), width: 1),
+              Border.all(color: Color.fromRGBO(233, 233, 233, 0.9), width: 1),
         ),
       );
     });
@@ -630,5 +630,167 @@ class IconContainer extends StatelessWidget {
     );
   }
 }
+
+/// Stack、Align、Positioned
+class StackContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+      child: Container(
+        height: 400,
+        width: 300,
+        color: Colors.red,
+        child: Stack(
+          alignment: Alignment.center,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topLeft,
+              child: Icon(Icons.home, size: 40, color: Colors.white),
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Icon(Icons.search, size: 40, color: Colors.white),
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: Icon(Icons.settings, size: 40, color: Colors.white),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: 300,
+                height: 200,
+                color: Colors.blue,
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 10,
+                      child: Icon(Icons.settings_applications, size: 30, color: Colors.white),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      left: 150,
+                      child: Icon(Icons.search, size: 30, color: Colors.green),
+                    ),
+                    Positioned(
+                      right: 0,
+                      child: Icon(Icons.home, size: 30, color: Colors.yellow),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// AspectRatio 宽高比
+class AspectRatioContent extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return AspectRatio(
+        aspectRatio: 3.0,
+        child: Container(
+          color: Colors.red,
+        ),
+      );
+  }
+
+}
+
+/// Card 卡片
+class CardContent extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ListView(
+      children: listData.map((value) {
+        return Card(
+          margin: EdgeInsets.all(10),
+          child: Column(
+            children: <Widget>[
+              AspectRatio(
+                aspectRatio: 20/9,
+                child: Image.network(value["imageUrl"], fit: BoxFit.cover,),
+              ),
+              ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: NetworkImage(value["imageUrl"]),
+                ),
+                title: Text(value["title"]),
+                subtitle: Text(value["author"]),
+              ),
+            ],
+          ),
+        );
+      }).toList(),
+    );
+  }
+
+}
+
+///Wrap 流布局
+class WrapContent extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Wrap(
+      spacing: 10,
+      runSpacing: 10,
+//      direction: Axis.vertical,
+//      alignment: WrapAlignment.spaceEvenly,
+//      runAlignment: WrapAlignment.center,
+      children: <Widget>[
+        MyButton("第一季333333"),
+        MyButton("第一dd季"),
+        MyButton("第一dfasf季"),
+        MyButton("第一adsfdfdsasdfasdf季"),
+        MyButton("第一季"),
+        MyButton("第一fsd季"),
+        MyButton("第一fdasdf季"),
+        MyButton("第一adfa季"),
+        MyButton("第一季"),
+        MyButton("第一dd季"),
+        MyButton("第一dfasf季"),
+        MyButton("第一adsfdafsdfasdf季"),
+        MyButton("第一季"),
+        MyButton("第一fsd季"),
+        MyButton("第一fdasdf季"),
+        MyButton("第一adfa季"),
+      ],
+    );
+  }
+
+}
+
+/// 自定义RaisedButton
+class MyButton extends StatelessWidget {
+
+  final String text;
+
+  const MyButton(this.text, {Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return RaisedButton(
+      child: Text(text),
+      textColor: Theme.of(context).accentColor,
+      onPressed: () {
+
+      },
+    );
+  }
+
+}
+
 
 
