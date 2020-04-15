@@ -18,16 +18,23 @@ class _HomePageState extends State<HomePage> {
         RaisedButton(
           child: Text("跳转到搜索页面"),
           onPressed: () {
-
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => SearchPage()
-              )
-            );
-
+              // 路由跳转，命名路由
+            Navigator.pushNamed(context, '/search', arguments: {
+              "id": 123
+            });
           },
           color: Theme.of(context).accentColor,
           textTheme: ButtonTextTheme.primary
+        ),
+        SizedBox(height: 20),
+        RaisedButton(
+            child: Text("跳转到商品页面"),
+            onPressed: () {
+              // 路由跳转，命名路由
+              Navigator.pushNamed(context, '/product');
+            },
+            color: Theme.of(context).accentColor,
+            textTheme: ButtonTextTheme.primary
         ),
       ],
     );

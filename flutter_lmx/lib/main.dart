@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'res/listData.dart';
 
 import 'pages/Tabs.dart';
+
+import 'routes/Routes.dart';
 
 /*
  * 提示 找不到 flutter.so 方法：
@@ -11,22 +14,33 @@ import 'pages/Tabs.dart';
  * flutter build apk --target-platform=android-arm64
  */
 
+/*
+ * git 提交
+ * git push origin master
+ * lmx227 / 7 + 3 + 3
+ */
+
 void main() {
   runApp(MyApp());
 }
 
 // 自定义组件
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-        home: Tabs(),
-        theme: ThemeData(primarySwatch: Colors.blue // 主题颜色
-            ));
+//        home: Tabs(), // 由 initialRoute 代替初始化
+        initialRoute: '/', // 初始化时加载的路由，代替 home
+        theme: ThemeData(primarySwatch: Colors.blue),
+
+        // 统一配置命名路由
+        onGenerateRoute: onGenerateRoute,
+
+    );
   }
 }
-
 
 /// Text、边框
 class HomeContent extends StatelessWidget {
@@ -362,9 +376,7 @@ class ListViewBuilderContent extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return ListView.builder(
-        itemCount: listData.length,
-        itemBuilder: this._getListData
-    );
+        itemCount: listData.length, itemBuilder: this._getListData);
   }
 
   Widget _getListData(context, index) {
@@ -666,7 +678,8 @@ class StackContent extends StatelessWidget {
                   children: <Widget>[
                     Positioned(
                       left: 10,
-                      child: Icon(Icons.settings_applications, size: 30, color: Colors.white),
+                      child: Icon(Icons.settings_applications,
+                          size: 30, color: Colors.white),
                     ),
                     Positioned(
                       bottom: 0,
@@ -690,23 +703,20 @@ class StackContent extends StatelessWidget {
 
 /// AspectRatio 宽高比
 class AspectRatioContent extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return AspectRatio(
-        aspectRatio: 3.0,
-        child: Container(
-          color: Colors.red,
-        ),
-      );
+      aspectRatio: 3.0,
+      child: Container(
+        color: Colors.red,
+      ),
+    );
   }
-
 }
 
 /// Card 卡片
 class CardContent extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -717,8 +727,11 @@ class CardContent extends StatelessWidget {
           child: Column(
             children: <Widget>[
               AspectRatio(
-                aspectRatio: 20/9,
-                child: Image.network(value["imageUrl"], fit: BoxFit.cover,),
+                aspectRatio: 20 / 9,
+                child: Image.network(
+                  value["imageUrl"],
+                  fit: BoxFit.cover,
+                ),
               ),
               ListTile(
                 leading: CircleAvatar(
@@ -733,12 +746,10 @@ class CardContent extends StatelessWidget {
       }).toList(),
     );
   }
-
 }
 
 ///Wrap 流布局
 class WrapContent extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -768,12 +779,10 @@ class WrapContent extends StatelessWidget {
       ],
     );
   }
-
 }
 
 /// 自定义RaisedButton
 class MyButton extends StatelessWidget {
-
   final String text;
 
   const MyButton(this.text, {Key key}) : super(key: key);
@@ -784,13 +793,7 @@ class MyButton extends StatelessWidget {
     return RaisedButton(
       child: Text(text),
       textColor: Theme.of(context).accentColor,
-      onPressed: () {
-
-      },
+      onPressed: () {},
     );
   }
-
 }
-
-
-

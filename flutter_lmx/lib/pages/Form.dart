@@ -4,7 +4,9 @@ class FormPage extends StatelessWidget {
 
   String title;
 
-  FormPage({this.title = "表单"});
+  final arguments;
+
+  FormPage({this.arguments});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class FormPage extends StatelessWidget {
         },
       ),
       appBar: AppBar(
-        title: Text(this.title),
+        title: Text(this.arguments["title"]),
       ),
       body: ListView(
         children: <Widget>[
