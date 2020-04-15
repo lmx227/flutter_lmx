@@ -22,12 +22,19 @@ class _SettingPageState extends State<SettingPage> {
         ListTile(
           title: Text("这是文本"),
         ),
-        ListTile(
-          title: Text("这是文本"),
+
+        RaisedButton(
+          child: Text("登录"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/login');
+          },
         ),
-        ListTile(
-          title: Text("这是文本"),
-        ),
+        RaisedButton(
+          child: Text("注册"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/registerFirst');
+          },
+        )
       ],
     );
   }

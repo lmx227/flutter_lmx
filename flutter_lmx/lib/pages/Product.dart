@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../pages/ProductInfo.dart';
-
 /// 商品页面
 class ProductPage extends StatefulWidget {
   @override

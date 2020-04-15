@@ -6,6 +6,11 @@ import '../pages/Form.dart';
 import '../pages/Search.dart';
 import '../pages/Product.dart';
 
+import '../pages/user/Login.dart';
+import '../pages/user/RegisterFirst.dart';
+import '../pages/user/RegisterSecond.dart';
+import '../pages/user/RegisterThird.dart';
+
 // 配置路由
 final routes = {
   // 路由传值
@@ -14,6 +19,10 @@ final routes = {
   '/form': (context, {arguments}) => FormPage(arguments: arguments),
   '/product': (context, {arguments}) => ProductPage(),
   '/productinfo': (context, {arguments}) => ProductInfoPage(arguments: arguments),
+  '/login': (context, {arguments}) => LoginPage(),
+  '/registerFirst': (context, {arguments}) => RegisterFirstPage(),
+  '/registerSecond': (context, {arguments}) => RegisterSecondPage(),
+  '/registerThird': (context, {arguments}) => RegisterThirdPage(),
 };
 
 // 命名路由 统一处理
