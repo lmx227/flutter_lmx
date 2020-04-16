@@ -63,6 +63,67 @@ class _TabsState extends State<Tabs> {
           ),
         ],
       ),
+
+      // 左侧边栏
+      drawer: Drawer(
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: UserAccountsDrawerHeader(
+                    accountName: Text("月影飞烟"),
+                    accountEmail: Text("lmx227@163.com"),
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage("http://www.itying.com/images/flutter/3.png"),
+                    ),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage("http://www.itying.com/images/flutter/2.png"),
+                        fit: BoxFit.cover
+                      ),
+                    ),
+                    otherAccountsPictures: <Widget>[
+                      Image.network("http://www.itying.com/images/flutter/4.png"),
+                      Image.network("http://www.itying.com/images/flutter/5.png"),
+                    ],
+                  )
+                )
+              ],
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.home),
+              ),
+              title: Text("我的空间"),
+            ),
+            Divider(),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.people),
+              ),
+              title: Text("用户中心"),
+              onTap: () {
+                Navigator.of(context).pop(); // 隐藏侧边栏
+                Navigator.pushNamed(context, '/user');
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.settings),
+              ),
+              title: Text("设置"),
+            ),
+            Divider(),
+          ],
+        )
+      ),
+
+      // 右侧边栏
+      endDrawer: Drawer(
+        child: Text("右侧边栏"),
+      ),
     );
   }
 }
