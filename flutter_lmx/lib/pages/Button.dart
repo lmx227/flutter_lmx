@@ -13,6 +13,14 @@ class ButtonPage extends StatelessWidget {
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {
+          print("FloatingActionButton");
+        },
+        backgroundColor: Colors.yellow,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Column(
         children: <Widget>[
           Row(

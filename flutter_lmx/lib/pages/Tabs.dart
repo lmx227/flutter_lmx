@@ -124,6 +124,28 @@ class _TabsState extends State<Tabs> {
       endDrawer: Drawer(
         child: Text("右侧边栏"),
       ),
+
+      // 浮动按钮，替换分类按钮
+      floatingActionButton: Container(
+        width: 60,
+        height: 60,
+        margin: EdgeInsets.only(top: 15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(40),
+          color: Colors.white
+        ),
+        child: FloatingActionButton(
+          child: Icon(Icons.category),
+          onPressed: () {
+            // 改变 _currentIndex
+            setState(() {
+              this._currentIndex = 1;
+            });
+          },
+          backgroundColor: this._currentIndex == 1 ? Colors.red : Colors.yellow,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
