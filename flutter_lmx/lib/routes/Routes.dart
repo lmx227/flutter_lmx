@@ -14,6 +14,8 @@ import '../pages/AppBarDemo.dart';
 import '../pages/TabBarController.dart';
 import '../pages/User.dart';
 import '../pages/Button.dart';
+import '../pages/TextField.dart';
+import '../pages/CheckBox.dart';
 
 // 配置路由
 final routes = {
@@ -31,6 +33,8 @@ final routes = {
   '/tabBarController': (context) => TabBarControllerPage(),
   '/user': (context) => UserPage(),
   '/buttonPage': (context) => ButtonPage(),
+  '/textFieldDemo': (context) => TextFieldDemoPage(),
+  '/checkboxDemo': (context) => CheckBoxDemo(),
 };
 
 // 命名路由 统一处理

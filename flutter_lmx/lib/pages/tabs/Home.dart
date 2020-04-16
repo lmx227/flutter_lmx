@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../Search.dart';
-import 'Category.dart';
-
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -13,7 +10,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         RaisedButton(
           child: Text("跳转到搜索页面"),
@@ -26,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           color: Theme.of(context).accentColor,
           textTheme: ButtonTextTheme.primary
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         RaisedButton(
             child: Text("跳转到商品页面"),
             onPressed: () {
@@ -36,27 +33,41 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).accentColor,
             textTheme: ButtonTextTheme.primary
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         RaisedButton(
           child: Text("跳转到AppBarDemoPage"),
           onPressed: () {
             Navigator.pushNamed(context, '/appBarDemo');
           },
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         RaisedButton(
           child: Text("跳转到TabBarControllerPage"),
           onPressed: () {
             Navigator.pushNamed(context, '/tabBarController');
           },
         ),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         RaisedButton(
           child: Text("跳转到按钮演示页面"),
           onPressed: () {
             Navigator.pushNamed(context, '/buttonPage');
           },
-        )
+        ),
+        SizedBox(height: 10),
+        RaisedButton(
+          child: Text("跳转到表单演示页面"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/textFieldDemo');
+          },
+        ),
+        SizedBox(height: 10),
+        RaisedButton(
+          child: Text("跳转到Checkbox页面"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/checkboxDemo');
+          },
+        ),
       ],
     );
   }
