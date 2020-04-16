@@ -49,6 +49,13 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.pushNamed(context, '/tabBarController');
           },
+        ),
+        SizedBox(height: 20),
+        RaisedButton(
+          child: Text("跳转到按钮演示页面"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/buttonPage');
+          },
         )
       ],
     );
