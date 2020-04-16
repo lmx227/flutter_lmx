@@ -26,18 +26,19 @@ void main() {
 
 // 自定义组件
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
-//        home: Tabs(), // 由 initialRoute 代替初始化
-        initialRoute: '/', // 初始化时加载的路由，代替 home
-        theme: ThemeData(primarySwatch: Colors.blue),
+//      home: Tabs(), // 由 initialRoute 代替初始化
+      initialRoute: '/', // 初始化时加载的路由，代替 home
+//      initialRoute: '/appBarDemo', // 初始化时加载的路由，代替 home
+      theme: ThemeData(primarySwatch: Colors.blue),
 
-        // 统一配置命名路由
-        onGenerateRoute: onGenerateRoute,
+      // 统一配置命名路由
+      onGenerateRoute: onGenerateRoute,
 
+      debugShowCheckedModeBanner: false, // 不显示debug图标
     );
   }
 }

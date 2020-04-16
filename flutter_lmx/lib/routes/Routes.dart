@@ -10,6 +10,7 @@ import '../pages/user/Login.dart';
 import '../pages/user/RegisterFirst.dart';
 import '../pages/user/RegisterSecond.dart';
 import '../pages/user/RegisterThird.dart';
+import '../pages/AppBarDemo.dart';
 
 // 配置路由
 final routes = {
@@ -23,6 +24,7 @@ final routes = {
   '/registerFirst': (context, {arguments}) => RegisterFirstPage(),
   '/registerSecond': (context, {arguments}) => RegisterSecondPage(),
   '/registerThird': (context, {arguments}) => RegisterThirdPage(),
+  '/appBarDemo': (context) => AppBarDemoPage(),
 };
 
 // 命名路由 统一处理

@@ -36,6 +36,13 @@ class _HomePageState extends State<HomePage> {
             color: Theme.of(context).accentColor,
             textTheme: ButtonTextTheme.primary
         ),
+        SizedBox(height: 20),
+        RaisedButton(
+          child: Text("跳转到AppBarDemoPage"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/appBarDemo');
+          },
+        )
       ],
     );
   }

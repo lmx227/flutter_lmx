@@ -40,7 +40,7 @@ class _TabsState extends State<Tabs> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: this._currentIndex,
         onTap: (int index) {
-          print(index);
+          // print(index);
           setState(() {
             this._currentIndex = index;
           });
