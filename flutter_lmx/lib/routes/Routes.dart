@@ -18,6 +18,7 @@ import '../pages/TextField.dart';
 import '../pages/CheckBox.dart';
 import '../pages/FormDemo.dart';
 import '../pages/DatePicker.dart';
+import '../pages/Swiper.dart';
 
 // 配置路由
 final routes = {
@@ -39,6 +40,7 @@ final routes = {
   '/checkboxDemo': (context) => CheckBoxDemo(),
   '/formDemo': (context) => FormDemoPage(),
   '/datePicker': (context) => DatePickerDemo(),
+  '/swiper': (context) => SwiperPage(),
 };
 
 // 命名路由 统一处理

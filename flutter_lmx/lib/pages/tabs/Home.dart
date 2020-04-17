@@ -82,6 +82,13 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushNamed(context, '/datePicker');
           },
         ),
+        SizedBox(height: 10),
+        RaisedButton(
+          child: Text("Swiper轮播图"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/swiper');
+          },
+        ),
       ],
     );
   }
