@@ -68,6 +68,13 @@ class _HomePageState extends State<HomePage> {
             Navigator.pushNamed(context, '/checkboxDemo');
           },
         ),
+        SizedBox(height: 10),
+        RaisedButton(
+          child: Text("学员登记系统"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/formDemo');
+          },
+        ),
       ],
     );
   }

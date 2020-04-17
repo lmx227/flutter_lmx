@@ -8,6 +8,12 @@ class CheckBoxDemo extends StatefulWidget {
 class _CheckBoxDemoState extends State<CheckBoxDemo> {
   var _isChecked = true;
 
+  int sex = 1;
+
+  int type = 11;
+
+  bool isSwitchOpen = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +48,69 @@ class _CheckBoxDemoState extends State<CheckBoxDemo> {
               });
             },
           ),
+          SizedBox(height: 20),
+          Row(
+            children: <Widget>[
+              SizedBox(width: 20),
+              Text("男"),
+              Radio(
+                value: 1,
+                groupValue: this.sex,
+                onChanged: (v) {
+                  setState(() {
+                    this.sex = v;
+                  });
+                },
+              ),
+              SizedBox(width: 20),
+              Text("女"),
+              Radio(
+                value: 2,
+                groupValue: this.sex,
+                onChanged: (v) {
+                  setState(() {
+                    this.sex = v;
+                  });
+                },
+              )
+            ],
+          ),
+          SizedBox(height: 20),
+          RadioListTile(
+            value: 1,
+            groupValue: this.type,
+            title: Text("一级标题"),
+            subtitle: Text("二级标题"),
+            secondary: Icon(Icons.help),
+            selected: this.type == 1,
+            onChanged: (v) {
+              setState(() {
+                this.type = v;
+              });
+            },
+          ),
+          RadioListTile(
+            value: 2,
+            groupValue: this.type,
+            title: Text("一级标题"),
+            subtitle: Text("二级标题"),
+            secondary: Icon(Icons.help),
+            selected: this.type == 2,
+            onChanged: (v) {
+              setState(() {
+                this.type = v;
+              });
+            },
+          ),
+          SizedBox(height: 20),
+          Switch(
+            value: this.isSwitchOpen,
+            onChanged: (isOpen) {
+              setState(() {
+                this.isSwitchOpen = isOpen;
+              });
+            },
+          )
         ],
       ),
     );

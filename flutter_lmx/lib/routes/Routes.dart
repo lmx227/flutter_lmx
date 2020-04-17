@@ -16,6 +16,7 @@ import '../pages/User.dart';
 import '../pages/Button.dart';
 import '../pages/TextField.dart';
 import '../pages/CheckBox.dart';
+import '../pages/FormDemo.dart';
 
 // 配置路由
 final routes = {
@@ -35,6 +36,7 @@ final routes = {
   '/buttonPage': (context) => ButtonPage(),
   '/textFieldDemo': (context) => TextFieldDemoPage(),
   '/checkboxDemo': (context) => CheckBoxDemo(),
+  '/formDemo': (context) => FormDemoPage(),
 };
 
 // 命名路由 统一处理
