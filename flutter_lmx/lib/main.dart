@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'res/listData.dart';
 
-import 'pages/Tabs.dart';
-
 import 'routes/Routes.dart';
+
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 /*
  * 提示 找不到 flutter.so 方法：
@@ -30,6 +30,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return MaterialApp(
+      // 国际化
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('zh', 'CH'),
+        const Locale('en', 'US'),
+      ],
+
 //      home: Tabs(), // 由 initialRoute 代替初始化
       initialRoute: '/', // 初始化时加载的路由，代替 home
 //      initialRoute: '/appBarDemo', // 初始化时加载的路由，代替 home
@@ -39,6 +49,7 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: onGenerateRoute,
 
       debugShowCheckedModeBanner: false, // 不显示debug图标
+
     );
   }
 }
