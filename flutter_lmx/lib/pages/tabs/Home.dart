@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterlmx/components/MyDialog.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -87,6 +88,17 @@ class _HomePageState extends State<HomePage> {
               child: Text("Dialog"),
               onPressed: () {
                 Navigator.pushNamed(context, '/dialog');
+              },
+            ),
+            RaisedButton(
+              child: Text("自定义Dialog"),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return MyDialog(title: "标题", content: "哈哈哈哈哈哈哈哈哈啊啊啊");
+                  }
+                );
               },
             ),
           ],
