@@ -8,7 +8,7 @@ import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart
 //const String MAX_DATETIME = "2100-05-12";
 //const String INIT_DATETIME = "2020-04-17";
 const String MIN_DATETIME = '2019-05-15 09:23:10';
-const String MAX_DATETIME = '2022-06-03 21:11:00';
+const String MAX_DATETIME = '2025-06-03 21:11:00';
 const String INIT_DATETIME = '2019-05-16 09:00:00';
 
 class DatePickerDemo extends StatefulWidget {

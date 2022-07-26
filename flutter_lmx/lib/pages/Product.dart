@@ -21,7 +21,7 @@ class _ProductPageState extends State<ProductPage> {
                 child: Text("跳转到商品详情页面"),
                 onPressed: () {
                   // 路由跳转，命名路由
-                  Navigator.pushNamed(context, '/productinfo',
+                  Navigator.pushNamed(context, '/productInfo',
                       arguments: {"pid": 456});
                 },
                 color: Theme.of(context).accentColor,
